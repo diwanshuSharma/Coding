@@ -1,0 +1,31 @@
+class BinaryTreeNode {
+    public : 
+    T data;
+    BinaryTreeNode<T> *left;
+    BinaryTreeNode<T> *right;
+
+    BinaryTreeNode(T data) {
+        this -> data = data;
+        left = NULL;
+        right = NULL;
+    }
+};
+***************/
+
+int leftSum(BinaryTreeNode<int>* root){
+    // Write your code here
+    
+	if(root == NULL)
+        return 0;
+    
+    int ans = 0;
+    
+    if(root->left != NULL){
+        ans = root->left->data + leftSum(root->left);
+    }
+    if(root->right != NULL){
+        ans += leftSum(root->right);
+    }
+    
+    return ans;
+}
